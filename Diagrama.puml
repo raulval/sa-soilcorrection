@@ -1,0 +1,63 @@
+@startuml
+
+package edu.utfpr.cp.dacom.sa.soilcorrection {
+    package conversao {
+        interface Conversao
+        class ConverteCMolcDm3EmMgDm3
+        class ConverteKgHaEmK2O
+        class ConverteKgHaEmP2O5
+        class ConverteMgDm3EmKgHa
+
+        Conversao <|.. ConverteCMolcDm3EmMgDm3
+        Conversao <|.. ConverteKgHaEmK2O
+        Conversao <|.. ConverteKgHaEmP2O5
+        Conversao <|.. ConverteMgDm3EmKgHa
+
+    }
+
+   package correcao {
+        class CorrecaoCalcioMagnesio
+        class CorrecaoFosforo
+        class CorrecaoPotassio
+        interface ICorrecaoNutriente
+        interface ICorrecaoNutrienteQuantidadeAplicar
+        class EquilibrioCorrecaoCTC
+
+        ICorrecaoNutriente <|.. CorrecaoCalcioMagnesio
+        ICorrecaoNutriente <|.. CorrecaoFosforo
+        ICorrecaoNutriente <|.. CorrecaoPotassio
+
+        ICorrecaoNutrienteQuantidadeAplicar <|.. CorrecaoPotassio
+        ICorrecaoNutrienteQuantidadeAplicar <|.. CorrecaoFosforo
+   }
+
+   package fonte {
+        enum FonteCalcioMagnesio
+        enum FonteFosforo
+        enum FontePotassio
+        interface IFonteNutriente
+
+        IFonteNutriente <|.. FonteCalcioMagnesio
+        IFonteNutriente <|.. FonteFosforo
+        IFonteNutriente <|.. FontePotassio
+   }
+
+   package nutriente {
+        enum NomeNutrienteAdicional
+        class NutrienteAdicional
+        class NutrientesCTC
+
+        NutrienteAdicional o-- NomeNutrienteAdicional
+   }
+
+   package solo {
+        enum TexturaSolo
+   }
+
+   nutriente <|.. fonte
+   nutriente <|.. solo
+   nutriente <|.. correcao
+   fonte <|.. correcao
+}
+
+@enduml
