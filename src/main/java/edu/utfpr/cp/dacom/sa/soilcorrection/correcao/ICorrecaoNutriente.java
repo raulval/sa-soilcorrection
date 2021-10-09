@@ -1,12 +1,15 @@
-package edu.utfpr.cp.dacom.sa.soilcorrection;
+package edu.utfpr.cp.dacom.sa.soilcorrection.correcao;
+
+import edu.utfpr.cp.dacom.sa.soilcorrection.fonte.IFonteNutriente;
+import edu.utfpr.cp.dacom.sa.soilcorrection.nutriente.NutrienteAdicional;
 
 import java.util.Set;
 
 public interface ICorrecaoNutriente<T extends IFonteNutriente> {
     
-    public default double calculaCusto(
-        double custoFonte, 
-        double qtdeAplicar) {
+    default double calculaCusto(
+            double custoFonte,
+            double qtdeAplicar) {
 
         if (custoFonte <= 0) {
             throw new IllegalArgumentException();
@@ -19,9 +22,9 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
         return custoFonte * qtdeAplicar / 1000;
     }
 
-    public default Set<NutrienteAdicional> getNutrientesAdicionais(
-        double qtdeAplicar, 
-        T fonteNutriente) {
+    default Set<NutrienteAdicional> getNutrientesAdicionais(
+            double qtdeAplicar,
+            T fonteNutriente) {
 
         fonteNutriente
             .getNutrientesAdicionais()
@@ -34,9 +37,9 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
         return fonteNutriente.getNutrientesAdicionais();
     }
 
-    public default double calculaEficienciaNutriente(
-        double qtdeNutrienteAdicionar, 
-        double eficienciaNutriente) {
+    default double calculaEficienciaNutriente(
+            double qtdeNutrienteAdicionar,
+            double eficienciaNutriente) {
 
         if (qtdeNutrienteAdicionar <= 0) {
             throw new IllegalArgumentException();

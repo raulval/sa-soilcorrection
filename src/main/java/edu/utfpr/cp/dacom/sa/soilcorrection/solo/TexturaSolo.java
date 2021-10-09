@@ -1,4 +1,6 @@
-package edu.utfpr.cp.dacom.sa.soilcorrection;
+package edu.utfpr.cp.dacom.sa.soilcorrection.solo;
+
+import edu.utfpr.cp.dacom.sa.soilcorrection.nutriente.NutrientesCTC;
 
 public enum TexturaSolo {
     

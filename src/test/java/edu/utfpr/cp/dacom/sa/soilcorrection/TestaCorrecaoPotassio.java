@@ -2,6 +2,10 @@ package edu.utfpr.cp.dacom.sa.soilcorrection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import edu.utfpr.cp.dacom.sa.soilcorrection.conversao.ConverteCMolcDm3EmMgDm3;
+import edu.utfpr.cp.dacom.sa.soilcorrection.conversao.ConverteKgHaEmK2O;
+import edu.utfpr.cp.dacom.sa.soilcorrection.correcao.CorrecaoPotassio;
+import edu.utfpr.cp.dacom.sa.soilcorrection.fonte.FontePotassio;
 import org.junit.jupiter.api.Test;
 
 public class TestaCorrecaoPotassio {
